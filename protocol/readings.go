@@ -44,22 +44,6 @@ func parseMeasurements(measurement string) ([]Measurement, error) {
 }
 
 /*
-Gets the degassing status
-*/
-func (a *AgilentIM540) GetDegassing() (Status, error) {
-	response, err := a.Request("GDS")
-	if err != nil {
-		return None, err
-	}
-
-	if response == "1" {
-		return SwitchOn, nil
-	}
-
-	return SwitchOff, nil
-}
-
-/*
 Changes the degassing status (0: off and 1: on)
 */
 func (a *AgilentIM540) SetDegassing(option Status) error {
